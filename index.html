@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Organization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('floral-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #000;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #1E90FF; /* Blue color */
+        }
+        input {
+            width: 80%;
+            max-width: 300px;
+            padding: 10px;
+            margin: 20px 0;
+            border: 2px solid #1E90FF;
+            border-radius: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #1E90FF;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Organization</h1>
+    <p>Search and download PDFs below</p>
+    <input type="text" id="searchBar" placeholder="Search PDFs...">
+    <ul id="pdfList">
+        <li><a href="pdf1.pdf" target="_blank">Document 1</a></li>
+        <li><a href="pdf2.pdf" target="_blank">Document 2</a></li>
+        <li><a href="pdf3.pdf" target="_blank">Document 3</a></li>
+    </ul>
+    <script>
+        const searchBar = document.getElementById('searchBar');
+        const pdfList = document.getElementById('pdfList');
+        searchBar.addEventListener('input', () => {
+            const filter = searchBar.value.toLowerCase();
+            const items = pdfList.getElementsByTagName('li');
+            for (let i = 0; i < items.length; i++) {
+                const text = items[i].innerText.toLowerCase();
+                items[i].style.display = text.includes(filter) ? '' : 'none';
+            }
+        });
+    </script>
+</body>
+</html>
