@@ -3,61 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SWS MUN</title>
+    <title>SWS MUN Club</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
             background: url('floral-bg.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: #000;
+            background-blend-mode: overlay;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
             text-align: center;
+        }
+
+        .header {
+            padding: 20px;
+            background-color: #004080;
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
             margin: 0;
-            padding: 5;
+            font-size: 2.5em;
         }
-        h1 {
-            color: #1E90FF; /* Blue color */
+
+        .search-bar {
+            margin-bottom: 20px;
         }
-        input {
-            width: 80%;
-            max-width: 300px;
+
+        .search-bar input {
+            width: 60%;
             padding: 10px;
-            margin: 20px 0;
-            border: 2px solid #1E90FF;
+            font-size: 1em;
+            border: 1px solid #004080;
             border-radius: 5px;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            background-color: #004080;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        li {
-            margin: 10px 0;
+
+        .search-bar button:hover {
+            background-color: #00509e;
         }
-        a {
+
+        .document-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .document {
+            width: 200px;
+            border: 1px solid #004080;
+            border-radius: 8px;
+            background-color: white;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .document img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .document-info {
+            padding: 10px;
+        }
+
+        .document-info h3 {
+            font-size: 1.2em;
+            color: #004080;
+            margin: 0 0 10px;
+        }
+
+        .document-info a {
+            display: inline-block;
+            margin: 5px 0;
+            padding: 10px;
+            font-size: 0.9em;
+            border-radius: 5px;
             text-decoration: none;
-            color: #1E90FF;
+            color: white;
+            background-color: #004080;
+            cursor: pointer;
+        }
+
+        .document-info a:hover {
+            background-color: #00509e;
         }
     </style>
 </head>
 <body>
-    <h1>SWS MUN</h1>
-    <p>Search and download BACKGROUND GUIDEs / MATRIX below</p>
-    <input type="text" id="searchBar" placeholder="Search PDFs...">
-    <ul id="pdfList">
-        <li><a href="BG1.pdf" target="_blank">Document 1</a></li>
-        <li><a href="BG2.pdf" target="_blank">Document 2</a></li>
-        <li><a href="BG3.pdf" target="_blank">Document 3</a></li>
-    </ul>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to SWS MUN Club</h1>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search for documents...">
+            <button onclick="searchDocuments()">Search</button>
+        </div>
+
+        <div class="document-preview" id="documentPreview">
+            <!-- Document Previews -->
+
+            <div class="document">
+                <img src="excel-icon.png" alt="Matrix Excel Sheet">
+                <div class="document-info">
+                    <h3>MATRIX.xlsx</h3>
+                    <a href="MATRIX.xlsx" download>Download</a>
+                    <a href="MATRIX.xlsx" target="_blank">View</a>
+                </div>
+            </div>
+
+            <!-- Background Guides -->
+            <div class="document">
+                <img src="pdf-icon.png" alt="Document Preview">
+                <div class="document-info">
+                    <h3>BG CHINA</h3>
+                    <a href="BG CHINA.pdf" download>Download</a>
+                    <a href="BG CHINA.pdf" target="_blank">View</a>
+                </div>
+            </div>
+
+            <div class="document">
+                <img src="pdf-icon.png" alt="Document Preview">
+                <div class="document-info">
+                    <h3>BG FRANCE</h3>
+                    <a href="BG FRANCE.pdf" download>Download</a>
+                    <a href="BG FRANCE.pdf" target="_blank">View</a>
+                </div>
+            </div>
+
+            <div class="document">
+                <img src="pdf-icon.png" alt="Document Preview">
+                <div class="document-info">
+                    <h3>BG SPAIN</h3>
+                    <a href="BG SPAIN.pdf" download>Download</a>
+                    <a href="BG SPAIN.pdf" target="_blank">View</a>
+                </div>
+            </div>
+
+            <div class="document">
+                <img src="pdf-icon.png" alt="Document Preview">
+                <div class="document-info">
+                    <h3>BG USA</h3>
+                    <a href="BG USA.pdf" download>Download</a>
+                    <a href="BG USA.pdf" target="_blank">View</a>
+                </div>
+            </div>
+
+            <div class="document">
+                <img src="pdf-icon.png" alt="Document Preview">
+                <div class="document-info">
+                    <h3>BG PERU</h3>
+                    <a href="BG PERU.pdf" download>Download</a>
+                    <a href="BG PERU.pdf" target="_blank">View</a>
+                </div>
+            </div>
+
+            <div class="document">
+                <img src="pdf-icon.png" alt="Document Preview">
+                <div class="document-info">
+                    <h3>BG GERMANY</h3>
+                    <a href="BG GERMANY.pdf" download>Download</a>
+                    <a href="BG GERMANY.pdf" target="_blank">View</a>
+                </div>
+            </div>
+
+            <div class="document">
+                <img src="pdf-icon.png" alt="Document Preview">
+                <div class="document-info">
+                    <h3>BG RUSSIA</h3>
+                    <a href="BG RUSSIA.pdf" download>Download</a>
+                    <a href="BG RUSSIA.pdf" target="_blank">View</a>
+                </div>
+            </div>
+
+            <div class="document">
+                <img src="pdf-icon.png" alt="Document Preview">
+                <div class="document-info">
+                    <h3>BG SOUTH AFRICA</h3>
+                    <a href="BG SOUTH AFRICA.pdf" download>Download</a>
+                    <a href="BG SOUTH AFRICA.pdf" target="_blank">View</a>
+                </div>
+            </div>
+
+            <div class="document">
+                <img src="pdf-icon.png" alt="Document Preview">
+                <div class="document-info">
+                    <h3>BG AUSTRALIA</h3>
+                    <a href="BG AUSTRALIA.pdf" download>Download</a>
+                    <a href="BG AUSTRALIA.pdf" target="_blank">View</a>
+                </div>
+            </div>
+
+            <div class="document">
+                <img src="pdf-icon.png" alt="Document Preview">
+                <div class="document-info">
+                    <h3>BG CANADA</h3>
+                    <a href="BG CANADA.pdf" download>Download</a>
+                    <a href="BG CANADA.pdf" target="_blank">View</a>
+                </div>
+            </div>
+
+            <div class="document">
+                <img src="pdf-icon.png" alt="Document Preview">
+                <div class="document-info">
+                    <h3>BG JAPAN</h3>
+                    <a href="BG JAPAN.pdf" download>Download</a>
+                    <a href="BG JAPAN.pdf" target="_blank">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        const searchBar = document.getElementById('searchBar');
-        const pdfList = document.getElementById('pdfList');
-        searchBar.addEventListener('input', () => {
-            const filter = searchBar.value.toLowerCase();
-            const items = pdfList.getElementsByTagName('li');
-            for (let i = 0; i < items.length; i++) {
-                const text = items[i].innerText.toLowerCase();
-                items[i].style.display = text.includes(filter) ? '' : 'none';
-            }
-        });
+        function searchDocuments() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const documents = document.querySelectorAll('.document');
+
+            documents.forEach(doc => {
+                const title = doc.querySelector('h3').innerText.toLowerCase();
+                if (title.includes(query)) {
+                    doc.style.display = 'block';
+                } else {
+                    doc.style.display = 'none';
+                }
+            });
+        }
     </script>
 </body>
 </html>
