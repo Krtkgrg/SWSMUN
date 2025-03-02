@@ -3,278 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SWS MUN Club</title>
+    <title>SWS MUN Club - Documents</title>
     <style>
+        /* General Reset */
+        * {
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
         body {
-            font-family: Georgia, sans-serif;
             margin: 0;
             padding: 0;
             background: url('floral-bg.jpg') no-repeat center center fixed;
             background-size: cover;
-            background-blend-mode: overlay;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-blend-mode: lighten;
+            background-color: rgba(255, 255, 255, 0.9);
         }
-
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .header {
-            padding: 20px;
-            color: #004080;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 3.5em;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .subtitle {
-            font-size: 1.2em;
-            color: #004080;
-            font-style: italic;
-            margin-top: 5px;
-        }
-
-        .description {
             margin: 30px auto;
             padding: 20px;
-            max-width: 900px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-left: 5px solid #004080;
-            text-align: left;
-            color: #004080;
-            font-size: 1.1em;
-            line-height: 1.6;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            border-radius: 15px;
+            overflow: hidden;
         }
-
-        .description h2 {
-            margin-top: 0;
-            font-size: 1.8em;
-            color: #002c5f;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .description p {
-            margin: 0;
-            font-weight: 400;
-            color: #333;
-        }
-
-        .search-bar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin: 20px auto;
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            max-width: 800px;
-        }
-
-        .search-bar input {
-            flex: 1;
-            padding: 12px;
-            font-size: 1em;
-            border: 1px solid #004080;
-            border-radius: 5px;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        .search-bar input:focus {
-            border-color: #00509e;
-            box-shadow: 0 0 5px rgba(0, 80, 158, 0.5);
-        }
-
-        .search-bar button {
-            padding: 12px 25px;
-            font-size: 1em;
-            border: none;
+        .header {
+            text-align: center;
+            padding: 20px;
             background-color: #004080;
             color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
-
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
+        .description {
+            text-align: center;
+            font-size: 1.1em;
+            color: #004080;
+            margin: 15px 0;
+        }
+        .search-bar {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .search-bar input {
+            width: 70%;
+            padding: 12px;
+            border: 2px solid #004080;
+            border-radius: 5px;
+            font-size: 1em;
+            outline: none;
+        }
+        .search-bar button {
+            padding: 12px 25px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
         .search-bar button:hover {
-            background-color: #00509e;
+            background-color: #0055aa;
+        }
+        .document-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            padding: 10px;
+        }
+        .document {
+            width: 200px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .document:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .document img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+        .document-info {
+            padding: 10px;
+            text-align: center;
+        }
+        .document-info h3 {
+            font-size: 1em;
+            color: #004080;
+            margin: 10px 0;
+        }
+        .document-info a {
+            display: block;
+            padding: 8px;
+            margin: 5px 0;
+            background-color: #004080;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .document-info a:hover {
+            background-color: #0055aa;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>SWS MUN Club</h1>
-            <div class="subtitle">Where ideas meet diplomacy</div>
-        </div>
 
-        <div class="description">
-            <h2>About SWS MUN Club</h2>
-            <p>
-                The SWS MUN Club serves as a vibrant platform for students to step into the shoes of global diplomats, representing nations and addressing some of the most pressing challenges faced by the world today. Through engaging debates, collaborative negotiations, and thought-provoking resolutions, we empower students to develop critical thinking, public speaking, and leadership skills. Our mission is to nurture confident, informed, and globally aware individuals who are ready to shape the future through diplomacy and dialogue.
-            </p>
-        </div>
-
-        <div class="search-bar">
-            <input type="text" id="search" placeholder="Search for documents (e.g., China, Matrix, France)" onkeypress="handleSearchEnter(event)">
-            <button onclick="searchDocuments()">Search</button>
-        </div>
+<div class="container">
+    <div class="header">
+        <h1>SWS MUN Club</h1>
+        <div class="subtitle">Where Idea Meets Diplomacy</div>
     </div>
 
-        <div class="description">
-            BACKGROUND GUIDEs, MATRIX.
-        </div>
-    
-            </div>
-
-            <div class="document">
-    <img src="usa.png" alt="BG USA Preview">
-    <div class="document-info">
-        <h3>BG USA</h3>
-        <a href="BG USA.pdf" download>Download</a>
-        <a href="BG USA.pdf" target="_blank">View</a>
-    </div>
-</div>
-
-<div class="document">
-    <img src="peru.png" alt="BG PERU Preview">
-    <div class="document-info">
-        <h3>BG PERU</h3>
-        <a href="BG PERU.pdf" download>Download</a>
-        <a href="BG PERU.pdf" target="_blank">View</a>
-    </div>
-</div>
-
-<div class="document">
-    <img src="germany.png" alt="BG GERMANY Preview">
-    <div class="document-info">
-        <h3>BG GERMANY</h3>
-        <a href="BG GERMANY.pdf" download>Download</a>
-        <a href="BG GERMANY.pdf" target="_blank">View</a>
-    </div>
-</div>
-
-<div class="document">
-    <img src="russia.png" alt="BG RUSSIA Preview">
-    <div class="document-info">
-        <h3>BG RUSSIA</h3>
-        <a href="BG RUSSIA.pdf" download>Download</a>
-        <a href="BG RUSSIA.pdf" target="_blank">View</a>
-    </div>
-</div>
-
-<div class="document">
-    <img src="south_africa.png" alt="BG SOUTH AFRICA Preview">
-    <div class="document-info">
-        <h3>BG SOUTH AFRICA</h3>
-        <a href="BG SOUTH AFRICA.pdf" download>Download</a>
-        <a href="BG SOUTH AFRICA.pdf" target="_blank">View</a>
-    </div>
-</div>
-
-<div class="document">
-    <img src="australia.png" alt="BG AUSTRALIA Preview">
-    <div class="document-info">
-        <h3>BG AUSTRALIA</h3>
-        <a href="BG AUSTRALIA.pdf" download>Download</a>
-        <a href="BG AUSTRALIA.pdf" target="_blank">View</a>
-    </div>
-</div>
-
-<div class="document">
-    <img src="canada.png" alt="BG CANADA Preview">
-    <div class="document-info">
-        <h3>BG CANADA</h3>
-        <a href="BG CANADA.pdf" download>Download</a>
-        <a href="BG CANADA.pdf" target="_blank">View</a>
-    </div>
-</div>
-
-<div class="document">
-    <img src="japan.png" alt="BG JAPAN Preview">
-    <div class="document-info">
-        <h3>BG JAPAN</h3>
-        <a href="BG JAPAN.pdf" download>Download</a>
-        <a href="BG JAPAN.pdf" target="_blank">View</a>
-    </div>
-</div>
-
-<div class="document">
-    <img src="china.png" alt="BG CHINA Preview">
-    <div class="document-info">
-        <h3>BG CHINA</h3>
-        <a href="BG CHINA.pdf" download>Download</a>
-        <a href="BG CHINA.pdf" target="_blank">View</a>
-    </div>
-</div>
-
-<div class="document">
-    <img src="france.png" alt="BG FRANCE Preview">
-    <div class="document-info">
-        <h3>BG FRANCE</h3>
-        <a href="BG FRANCE.pdf" download>Download</a>
-        <a href="BG FRANCE.pdf" target="_blank">View</a>
-    </div>
-</div>
-
-<div class="document">
-    <img src="spain.png" alt="BG SPAIN Preview">
-    <div class="document-info">
-        <h3>BG SPAIN</h3>
-        <a href="BG SPAIN.pdf" download>Download</a>
-        <a href="BG SPAIN.pdf" target="_blank">View</a>
-    </div>
-</div>
-
-<div class="document">
-    <img src="matrix.png" alt="Matrix Preview">
-    <div class="document-info">
-        <h3>MATRIX</h3>
-        <a href="MATRIX.xlsx" download>Download</a>
-        <a href="MATRIX.xlsx" target="_blank">View</a>
-    </div>
-</div>
-        </div>
+    <div class="description">
+        Explore Background Guides and other essential documents for your upcoming MUN Conference.
     </div>
 
-    <script>
-        function handleSearchEnter(event) {
-            if (event.key === 'Enter') {
-                searchDocuments();
+    <div class="search-bar">
+        <input type="text" id="search" placeholder="Search for a country...">
+        <button onclick="searchDocuments()">Search</button>
+    </div>
+
+    <div class="document-preview" id="documentPreview">
+        <!-- Document Cards - Full List -->
+        <script>
+            const documents = [
+                { name: "BG CHINA", file: "BG CHINA.pdf", img: "china.png" },
+                { name: "BG FRANCE", file: "BG FRANCE.pdf", img: "france.png" },
+                { name: "BG SPAIN", file: "BG SPAIN.pdf", img: "spain.png" },
+                { name: "BG USA", file: "BG USA.pdf", img: "usa.png" },
+                { name: "BG PERU", file: "BG PERU.pdf", img: "peru.png" },
+                { name: "BG GERMANY", file: "BG GERMANY.pdf", img: "germany.png" },
+                { name: "BG RUSSIA", file: "BG RUSSIA.pdf", img: "russia.png" },
+                { name: "BG SOUTH AFRICA", file: "BG SOUTH AFRICA.pdf", img: "south africa.png" },
+                { name: "BG AUSTRALIA", file: "BG AUSTRALIA.pdf", img: "australia.png" },
+                { name: "BG CANADA", file: "BG CANADA.pdf", img: "canada.png" },
+                { name: "BG JAPAN", file: "BG JAPAN.pdf", img: "japan.png" },
+                { name: "MATRIX", file: "MATRIX.xlsx", img: "matrix.png" }
+            ];
+
+            function loadDocuments() {
+                const container = document.getElementById('documentPreview');
+                container.innerHTML = documents.map(doc => `
+                    <div class="document">
+                        <img src="${doc.img}" alt="${doc.name}">
+                        <div class="document-info">
+                            <h3>${doc.name}</h3>
+                            <a href="${doc.file}" download>Download</a>
+                            <a href="${doc.file}" target="_blank">View</a>
+                        </div>
+                    </div>
+                `).join('');
             }
-        }
 
-        function searchDocuments() {
-            const query = document.getElementById('search').value.trim().toLowerCase();
-            const documents = document.querySelectorAll('.document');
+            function searchDocuments() {
+                const query = document.getElementById('search').value.toLowerCase();
+                const documentCards = document.querySelectorAll('.document');
 
-            documents.forEach(doc => {
-                const title = doc.querySelector('h3')?.innerText.toLowerCase();
-                if (title && title.includes(query)) {
-                    doc.style.display = 'block';
-                } else {
-                    doc.style.display = 'none';
-                }
-            });
-        }
-    </script>
+                documentCards.forEach(card => {
+                    const title = card.querySelector('h3').innerText.toLowerCase();
+                    if (title.includes(query)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
 
-    </body>
+            window.onload = loadDocuments;
+        </script>
+    </div>
+</div>
+
+</body>
 </html>
