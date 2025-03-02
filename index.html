@@ -24,116 +24,97 @@
 
         .header {
             padding: 20px;
-            color: #ffffff;
-            background-color: #004080;
-            border-radius: 20px;
-            margin-bottom: 35px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            color: #004080;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
         .header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 3.5em;
             font-weight: bold;
-            letter-spacing: 1px;
             text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .subtitle {
             font-size: 1.2em;
-            font-weight: 500;
-            margin-top: 10px;
-            color: #cce5ff;
+            color: #004080;
+            font-style: italic;
+            margin-top: 5px;
         }
 
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2em;
-            }
-            .subtitle {
-                font-size: 1em;
-            }
+        .description {
+            margin: 30px auto;
+            padding: 20px;
+            max-width: 900px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-left: 5px solid #004080;
+            text-align: left;
+            color: #004080;
+            font-size: 1.1em;
+            line-height: 1.6;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .description h2 {
+            margin-top: 0;
+            font-size: 1.8em;
+            color: #002c5f;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .description p {
+            margin: 0;
+            font-weight: 400;
+            color: #333;
         }
 
         .search-bar {
-            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 800px;
         }
 
         .search-bar input {
-            width: 60%;
-            padding: 10px;
+            flex: 1;
+            padding: 12px;
             font-size: 1em;
             border: 1px solid #004080;
             border-radius: 5px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .search-bar input:focus {
+            border-color: #00509e;
+            box-shadow: 0 0 5px rgba(0, 80, 158, 0.5);
         }
 
         .search-bar button {
-            padding: 10px 20px;
+            padding: 12px 25px;
             font-size: 1em;
             border: none;
             background-color: #004080;
             color: white;
             border-radius: 5px;
             cursor: pointer;
+            transition: 0.3s;
         }
 
         .search-bar button:hover {
             background-color: #00509e;
-        }
-
-        .document-preview {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .document {
-            width: 200px;
-            border: 1px solid #004080;
-            border-radius: 8px;
-            background-color: white;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .document img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .document-info {
-            padding: 10px;
-        }
-
-        .document-info h3 {
-            font-size: 1.2em;
-            color: #004080;
-            margin: 0 0 10px;
-        }
-
-        .document-info a {
-            display: inline-block;
-            margin: 5px 0;
-            padding: 10px;
-            font-size: 0.9em;
-            border-radius: 5px;
-            text-decoration: none;
-            color: white;
-            background-color: #004080;
-            cursor: pointer;
-        }
-
-        .document-info a:hover {
-            background-color: #00509e;
-        }
-
-        .description {
-            margin-bottom: 30px;
-            font-size: 1.2em;
-            color: #004080;
         }
     </style>
 </head>
@@ -141,35 +122,36 @@
     <div class="container">
         <div class="header">
             <h1>SWS MUN Club</h1>
-            <div class="subtitle">Where Ideas Meet Diplomacy</div>
+            <div class="subtitle">Where ideas meet diplomacy</div>
         </div>
 
         <div class="description">
-            The SWS MUN Club is a platform for students to engage in diplomacy, debate, and collaborative problem-solving. Our mission is to inspire the next generation of global leaders by fostering critical thinking and effective communication skills in a dynamic and inclusive environment.
+            <h2>About SWS MUN Club</h2>
+            <p>
+                The SWS MUN Club serves as a vibrant platform for students to step into the shoes of global diplomats, representing nations and addressing some of the most pressing challenges faced by the world today. Through engaging debates, collaborative negotiations, and thought-provoking resolutions, we empower students to develop critical thinking, public speaking, and leadership skills. Our mission is to nurture confident, informed, and globally aware individuals who are ready to shape the future through diplomacy and dialogue.
+            </p>
         </div>
-        
+
         <div class="search-bar">
-            <input type="text" id="search" placeholder="Search for documents...">
+            <input type="text" id="search" placeholder="Search for documents (e.g., China, Matrix, France)" onkeypress="handleSearchEnter(event)">
             <button onclick="searchDocuments()">Search</button>
-        </div>
-
-        <div class="description">
-            BACKGROUND GUIDEs, MATRIX.
-        </div>
-        
-        <div class="document-preview" id="documentPreview">
-            <!-- Document previews remain unchanged (we’ll handle them when we reach that section). -->
         </div>
     </div>
 
     <script>
+        function handleSearchEnter(event) {
+            if (event.key === 'Enter') {
+                searchDocuments();
+            }
+        }
+
         function searchDocuments() {
-            const query = document.getElementById('search').value.toLowerCase();
+            const query = document.getElementById('search').value.trim().toLowerCase();
             const documents = document.querySelectorAll('.document');
 
             documents.forEach(doc => {
-                const title = doc.querySelector('h3').innerText.toLowerCase();
-                if (title.includes(query)) {
+                const title = doc.querySelector('h3')?.innerText.toLowerCase();
+                if (title && title.includes(query)) {
                     doc.style.display = 'block';
                 } else {
                     doc.style.display = 'none';
