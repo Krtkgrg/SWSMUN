@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SWS MUN Club</title>
+    <title>SWS MUN Club - Official Documents</title>
     <style>
         body {
             font-family: Georgia, sans-serif;
@@ -32,6 +32,7 @@
             margin: 0;
             font-size: 3em;
             font-weight: bold;
+            text-transform: uppercase;
         }
 
         .subtitle {
@@ -140,21 +141,22 @@
         </div>
 
         <div class="description">
-            Welcome to the official repository of the **SWS MUN Club**. Here, you can access essential documents including background guides and the country matrix, designed to help you excel at our upcoming Model United Nations conference. Let these resources guide your research and fuel your diplomatic strategies!
+            Welcome to the **official document hub** of the **SWS MUN Club**. This platform provides you direct access to essential documents like **Background Guides** and the **Country Matrix** to support your preparation. Whether you are representing China, France, or South Africa, these materials will sharpen your research and strengthen your diplomatic edge.  
+            Stay informed, stay prepared — because every delegate matters.
         </div>
         
         <div class="search-bar">
-            <input type="text" id="search" placeholder="Search documents by country...">
+            <input type="text" id="search" placeholder="Search documents by country name...">
             <button onclick="searchDocuments()">Search</button>
         </div>
 
         <div class="description">
-            <h2>Available Documents</h2>
-            <p>Explore the Background Guides (BGs) and Matrix to prepare for the upcoming MUN sessions.</p>
+            <h2>Explore Official Documents</h2>
+            <p>Background Guides (BG) and Country Matrix are available below for download and direct viewing.</p>
         </div>
 
         <div class="document-preview" id="documentPreview">
-            <!-- Document Cards for each country -->
+            <!-- All country document cards -->
             <div class="document"><img src="china.png" alt="China"><div class="document-info"><h3>BG - China</h3><div class="document-links"><a href="BG CHINA.pdf" download>Download</a><a href="BG CHINA.pdf" target="_blank">View</a></div></div></div>
             <div class="document"><img src="france.png" alt="France"><div class="document-info"><h3>BG - France</h3><div class="document-links"><a href="BG FRANCE.pdf" download>Download</a><a href="BG FRANCE.pdf" target="_blank">View</a></div></div></div>
             <div class="document"><img src="spain.png" alt="Spain"><div class="document-info"><h3>BG - Spain</h3><div class="document-links"><a href="BG SPAIN.pdf" download>Download</a><a href="BG SPAIN.pdf" target="_blank">View</a></div></div></div>
@@ -171,10 +173,3 @@
     </div>
 
     <script>
-        function searchDocuments() {
-            const query = document.getElementById('search').value.toLowerCase();
-            document.querySelectorAll('.document').forEach(doc => doc.style.display = doc.innerText.toLowerCase().includes(query) ? 'block' : 'none');
-        }
-    </script>
-</body>
-</html>
