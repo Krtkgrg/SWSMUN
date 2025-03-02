@@ -11,8 +11,8 @@
             padding: 0;
             background: url('floral-bg.jpg') no-repeat center center fixed;
             background-size: cover;
-            background-blend-mode: overlay;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
         }
 
         .container {
@@ -24,36 +24,47 @@
 
         .header {
             padding: 20px;
-            color: #004080;
-            border-radius: 35px;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .header h1 {
+            font-size: 3.5em;
+            color: #004080;
             margin: 0;
-            font-size: 3em;
         }
 
         .subtitle {
             font-size: 1.5em;
             color: #004080;
-            margin: 10px 0;
+            margin-top: 5px;
+        }
+
+        .modern-description {
+            background-color: rgba(0, 64, 128, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 900px;
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #004080;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .search-bar {
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
 
         .search-bar input {
             width: 60%;
-            padding: 10px;
+            padding: 12px;
             font-size: 1em;
             border: 1px solid #004080;
             border-radius: 5px;
         }
 
         .search-bar button {
-            padding: 10px 20px;
+            padding: 12px 20px;
             font-size: 1em;
             border: none;
             background-color: #004080;
@@ -71,6 +82,7 @@
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
+            margin-top: 20px;
         }
 
         .document {
@@ -80,6 +92,11 @@
             background-color: white;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .document:hover {
+            transform: translateY(-5px);
         }
 
         .document img {
@@ -93,7 +110,7 @@
         }
 
         .document-info h3 {
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #004080;
             margin: 0 0 10px;
         }
@@ -101,23 +118,16 @@
         .document-info a {
             display: inline-block;
             margin: 5px 0;
-            padding: 10px;
+            padding: 8px 12px;
             font-size: 0.9em;
-            border-radius: 5px;
             text-decoration: none;
-            color: white;
             background-color: #004080;
-            cursor: pointer;
+            color: white;
+            border-radius: 5px;
         }
 
         .document-info a:hover {
             background-color: #00509e;
-        }
-
-        .description {
-            margin-bottom: 30px;
-            font-size: 1.2em;
-            color: #004080;
         }
     </style>
 </head>
@@ -128,8 +138,12 @@
             <div class="subtitle">Where idea meets diplomacy</div>
         </div>
 
-        <div class="description">
-            The SWS MUN Club is a platform for students to engage in diplomacy, debate, and collaborative problem-solving. Our mission is to inspire the next generation of global leaders by fostering critical thinking and effective communication skills in a dynamic and inclusive environment.
+        <div class="modern-description">
+            The SWS MUN Club serves as a vibrant platform where young minds come together to step into the shoes of global diplomats.  
+            Our mission is to nurture critical thinking, foster collaborative problem-solving, and empower students to confidently 
+            articulate their ideas on international issues.  
+            Through debate, diplomacy, and dialogue, we aim to cultivate the next generation of leaders who understand the value of 
+            cooperation in building a better world.
         </div>
         
         <div class="search-bar">
@@ -137,138 +151,57 @@
             <button onclick="searchDocuments()">Search</button>
         </div>
 
-        <div class="description">
-            BACKGROUND GUIDEs, MATRIX.
-        </div>
-        
         <div class="document-preview" id="documentPreview">
-            <!-- Document Previews -->
-
-            <div class="document">
-                <img src="china.png" alt="China Document">
-                <div class="document-info">
-                    <h3>BG CHINA</h3>
-                    <a href="BG CHINA.pdf" download>Download</a>
-                    <a href="BG CHINA.pdf" target="_blank">View</a>
+            <!-- All Documents -->
+            ${['China', 'France', 'Spain', 'USA', 'Peru', 'Germany', 'Russia', 'South Africa', 'Australia', 'Canada', 'Japan', 'Matrix'].map(country => `
+                <div class="document">
+                    <img src="${country.toLowerCase().replace(' ', '-')}.png" alt="${country} Document">
+                    <div class="document-info">
+                        <h3>BG ${country.toUpperCase()}</h3>
+                        <a href="BG ${country.toUpperCase()}.pdf" download>Download</a>
+                        <a href="BG ${country.toUpperCase()}.pdf" target="_blank">View</a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="document">
-                <img src="france.png" alt="France Document">
-                <div class="document-info">
-                    <h3>BG FRANCE</h3>
-                    <a href="BG FRANCE.pdf" download>Download</a>
-                    <a href="BG FRANCE.pdf" target="_blank">View</a>
-                </div>
-            </div>
-
-            <div class="document">
-                <img src="spain.png" alt="Spain Document">
-                <div class="document-info">
-                    <h3>BG SPAIN</h3>
-                    <a href="BG SPAIN.pdf" download>Download</a>
-                    <a href="BG SPAIN.pdf" target="_blank">View</a>
-                </div>
-            </div>
-
-            <div class="document">
-                <img src="usa.png" alt="Document Preview">
-                <div class="document-info">
-                    <h3>BG USA</h3>
-                    <a href="BG USA.pdf" download>Download</a>
-                    <a href="BG USA.pdf" target="_blank">View</a>
-                </div>
-            </div>
-
-            <div class="document">
-                <img src="peru.png" alt="Document Preview">
-                <div class="document-info">
-                    <h3>BG PERU</h3>
-                    <a href="BG PERU.pdf" download>Download</a>
-                    <a href="BG PERU.pdf" target="_blank">View</a>
-                </div>
-            </div>
-
-            <div class="document">
-                <img src="germany.png" alt="Document Preview">
-                <div class="document-info">
-                    <h3>BG GERMANY</h3>
-                    <a href="BG GERMANY.pdf" download>Download</a>
-                    <a href="BG GERMANY.pdf" target="_blank">View</a>
-                </div>
-            </div>
-
-            <div class="document">
-                <img src="russia.png" alt="Document Preview">
-                <div class="document-info">
-                    <h3>BG RUSSIA</h3>
-                    <a href="BG RUSSIA.pdf" download>Download</a>
-                    <a href="BG RUSSIA.pdf" target="_blank">View</a>
-                </div>
-            </div>
-
-            <div class="document">
-                <img src="south africa.png" alt="Document Preview">
-                <div class="document-info">
-                    <h3>BG SOUTH AFRICA</h3>
-                    <a href="BG SOUTH AFRICA.pdf" download>Download</a>
-                    <a href="BG SOUTH AFRICA.pdf" target="_blank">View</a>
-                </div>
-            </div>
-
-            <div class="document">
-                <img src="australia.png" alt="Document Preview">
-                <div class="document-info">
-                    <h3>BG AUSTRALIA</h3>
-                    <a href="BG AUSTRALIA.pdf" download>Download</a>
-                    <a href="BG AUSTRALIA.pdf" target="_blank">View</a>
-                </div>
-            </div>
-
-            <div class="document">
-                <img src="canada.png" alt="Document Preview">
-                <div class="document-info">
-                    <h3>BG CANADA</h3>
-                    <a href="BG CANADA.pdf" download>Download</a>
-                    <a href="BG CANADA.pdf" target="_blank">View</a>
-                </div>
-            </div>
-
-            <div class="document">
-                <img src="japan.png" alt="Document Preview">
-                <div class="document-info">
-                    <h3>BG JAPAN</h3>
-                    <a href="BG JAPAN.pdf" download>Download</a>
-                    <a href="BG JAPAN.pdf" target="_blank">View</a>
-                </div>
-            </div>
-
-            <div class="document">
-                <img src="matrix.png" alt="Document Preview">
-                <div class="document-info">
-                    <h3>MATRIX</h3>
-                    <a href="MATRIX.xlsx" download>Download</a>
-                    <a href="MATRIX.xlsx" target="_blank">View</a>
-                </div>
-            </div>
-
+            `).join('')}
         </div>
     </div>
 
     <script>
+        const documentData = [
+            'China', 'France', 'Spain', 'USA', 'Peru', 
+            'Germany', 'Russia', 'South Africa', 'Australia', 
+            'Canada', 'Japan', 'Matrix'
+        ];
+
+        const container = document.getElementById('documentPreview');
+
+        function loadDocuments() {
+            documentData.forEach(country => {
+                const div = document.createElement('div');
+                div.className = 'document';
+                div.innerHTML = `
+                    <img src="${country.toLowerCase().replace(' ', '-')}.png" alt="${country} Document">
+                    <div class="document-info">
+                        <h3>BG ${country.toUpperCase()}</h3>
+                        <a href="BG ${country.toUpperCase()}.pdf" download>Download</a>
+                        <a href="BG ${country.toUpperCase()}.pdf" target="_blank">View</a>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
         function searchDocuments() {
             const query = document.getElementById('search').value.toLowerCase();
             const documents = document.querySelectorAll('.document');
 
             documents.forEach(doc => {
                 const title = doc.querySelector('h3').innerText.toLowerCase();
-                if (title.includes(query)) {
-                    doc.style.display = 'block';
-                } else {
-                    doc.style.display = 'none';
-                }
+                doc.style.display = title.includes(query) ? 'block' : 'none';
             });
         }
+
+        window.onload = loadDocuments;
     </script>
 </body>
 </html>
