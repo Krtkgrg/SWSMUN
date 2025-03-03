@@ -3,136 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover essential documents and background guides for the SWS MUN Club.">
-    <title>SWS MUN Club - Documents</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>SWS MUN Club</title>
     <style>
         body {
+            font-family: Georgia, sans-serif;
             margin: 0;
             padding: 0;
             background: url('floral-bg.jpg') no-repeat center center fixed;
             background-size: cover;
-            background-blend-mode: lighten;
             background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
         }
+
         .container {
-            margin-top: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
         }
+
+        .header {
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            color: #004080;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #004080;
+            margin-top: 5px;
+        }
+
+        .modern-description {
+            background-color: rgba(0, 64, 128, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 900px;
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #004080;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar {
+            margin: 20px 0;
+        }
+
+        .search-bar input {
+            width: 60%;
+            padding: 12px;
+            font-size: 1em;
+            border: 1px solid #004080;
+            border-radius: 5px;
+        }
+
+        .search-bar button {
+            padding: 12px 20px;
+            font-size: 1em;
+            border: none;
+            background-color: #004080;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #00509e;
+        }
+
+        .document-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .document {
+            width: 200px;
+            border: 1px solid #004080;
+            border-radius: 8px;
+            background-color: white;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .document:hover {
+            transform: translateY(-5px);
+        }
+
         .document img {
-            height: 200px;
+            width: 100%;
+            height: 150px;
             object-fit: cover;
         }
-        .modal-body img {
-            width: 100%;
+
+        .document-info {
+            padding: 10px;
         }
-        .description-tile {
-            background: white;
-            border-left: 5px solid blue;
-            padding: 15px;
-            margin-bottom: 20px;
+
+        .document-info h3 {
+            font-size: 1.1em;
+            color: #004080;
+            margin: 0 0 10px;
+        }
+
+        .document-info a {
+            display: inline-block;
+            margin: 5px 0;
+            padding: 8px 12px;
+            font-size: 0.9em;
+            text-decoration: none;
+            background-color: #004080;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .document-info a:hover {
+            background-color: #00509e;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">SWS MUN Club</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
     <div class="container">
-        <div class="jumbotron text-center">
-            <h1 class="display-4">SWS MUN Club</h1>
-            <p class="lead">Where Idea Meets Diplomacy</p>
-            <div class="description-tile">
-                <p>Explore Background Guides and other essential documents for your upcoming MUN Conference. Search for a country below to find the relevant documents.</p>
-            </div>
-            <input type="text" id="search" class="form-control" placeholder="Search for a country...">
-            <button class="btn btn-primary mt-3" onclick="searchDocuments()">Search</button>
+        <div class="header">
+            <h1>SWS MUN Club</h1>
+            <div class="subtitle">Where idea meets diplomacy</div>
         </div>
-        <div class="row" id="documentPreview"></div>
-    </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="documentModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="documentModalLabel">Document</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+        <div class="modern-description">
+            The SWS MUN Club serves as a vibrant platform where young minds come together to step into the shoes of global diplomats.  
+            Our mission is to nurture critical thinking, foster collaborative problem-solving, and empower students to confidently 
+            articulate their ideas on international issues.  
+            Through debate, diplomacy, and dialogue, we aim to cultivate the next generation of leaders who understand the value of 
+            cooperation in building a better world.
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search for documents...">
+            <button onclick="searchDocuments()">Search</button>
+        </div>
+
+        <div class="document-preview" id="documentPreview">
+            <!-- All Documents -->
+            ${['China', 'France', 'Spain', 'USA', 'Peru', 'Germany', 'Russia', 'South Africa', 'Australia', 'Canada', 'Japan', 'Matrix'].map(country => `
+                <div class="document">
+                    <img src="${country.toLowerCase().replace(' ', '-')}.png" alt="${country} Document">
+                    <div class="document-info">
+                        <h3>BG ${country.toUpperCase()}</h3>
+                        <a href="BG ${country.toUpperCase()}.pdf" download>Download</a>
+                        <a href="BG ${country.toUpperCase()}.pdf" target="_blank">View</a>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <img src="" alt="Document" id="documentImage">
-                </div>
-                <div class="modal-footer">
-                    <a href="#" id="downloadLink" class="btn btn-primary" download>Download</a>
-                </div>
-            </div>
+            `).join('')}
         </div>
     </div>
 
     <script>
-        const documents = [
-            { name: "BG CHINA", file: "BG CHINA.pdf", img: "china.png" },
-            { name: "BG FRANCE", file: "BG FRANCE.pdf", img: "france.png" },
-            { name: "BG SPAIN", file: "BG SPAIN.pdf", img: "spain.png" },
-            { name: "BG USA", file: "BG USA.pdf", img: "usa.png" },
-            { name: "BG PERU", file: "BG PERU.pdf", img: "peru.png" },
-            { name: "BG GERMANY", file: "BG GERMANY.pdf", img: "germany.png" },
-            { name: "BG RUSSIA", file: "BG RUSSIA.pdf", img: "russia.png" },
-            { name: "BG SOUTH AFRICA", file: "BG SOUTH AFRICA.pdf", img: "south africa.png" },
-            { name: "BG AUSTRALIA", file: "BG AUSTRALIA.pdf", img: "australia.png" },
-            { name: "BG CANADA", file: "BG CANADA.pdf", img: "canada.png" },
-            { name: "BG JAPAN", file: "BG JAPAN.pdf", img: "japan.png" },
-            { name: "MATRIX", file: "MATRIX.xlsx", img: "matrix.png" }
+        const documentData = [
+            'China', 'France', 'Spain', 'USA', 'Peru', 
+            'Germany', 'Russia', 'South Africa', 'Australia', 
+            'Canada', 'Japan', 'Matrix'
         ];
 
+        const container = document.getElementById('documentPreview');
+
         function loadDocuments() {
-            const container = document.getElementById('documentPreview');
-            container.innerHTML = documents.map(doc => `
-                <div class="col-md-4">
-                    <div class="card document">
-                        <img src="${doc.img}" class="card-img-top" alt="${doc.name}">
-                        <div class="card-body">
-                            <h5 class="card-title">${doc.name}</h5>
-                            <button class="btn btn-primary" onclick="viewDocument('${doc.img}', '${doc.file}')">View</button>
-                            <a href="${doc.file}" class="btn btn-secondary" download>Download</a>
-                        </div>
+            documentData.forEach(country => {
+                const div = document.createElement('div');
+                div.className = 'document';
+                div.innerHTML = `
+                    <img src="${country.toLowerCase().replace(' ', '-')}.png" alt="${country} Document">
+                    <div class="document-info">
+                        <h3>BG ${country.toUpperCase()}</h3>
+                        <a href="BG ${country.toUpperCase()}.pdf" download>Download</a>
+                        <a href="BG ${country.toUpperCase()}.pdf" target="_blank">View</a>
                     </div>
-                </div>
-            `).join('');
+                `;
+                container.appendChild(div);
+            });
         }
 
         function searchDocuments() {
             const query = document.getElementById('search').value.toLowerCase();
-            const documentCards = document.querySelectorAll('.document');
+            const documents = document.querySelectorAll('.document');
 
-            documentCards.forEach(card => {
-                const title = card.querySelector('.card-title').innerText.toLowerCase();
-                if (title.includes(query)) {
-                    card.parentElement.style.display = 'block';
-                } else {
-                    card.parentElement.style.display = 'none';
-                }
+            documents.forEach(doc => {
+                const title = doc.querySelector('h3').innerText.toLowerCase();
+                doc.style.display = title.includes(query) ? 'block' : 'none';
             });
-        }
-
-        function viewDocument(img, file) {
-            document.getElementById('documentImage').src = img;
-            document.getElementById('downloadLink').href = file;
-            $('#documentModal').modal('show');
         }
 
         window.onload = loadDocuments;
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
