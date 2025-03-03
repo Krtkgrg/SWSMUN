@@ -174,33 +174,11 @@
                     <div class="document-info">
                         <h3>BG ${country.toUpperCase()}</h3>
                         <a href="BG ${country.toUpperCase()}.pdf" download>Download</a>
-                        <a href="#" onclick="previewDocument('BG ${country.toUpperCase()}')">View</a>
+                        <a href="BG ${country.toUpperCase()}.pdf" target="_blank">View</a>
                     </div>
                 `;
                 container.appendChild(div);
             });
-        }
-
-        function previewDocument(fileName) {
-            const extension = fileName.split('.').pop().toLowerCase();
-            let filePath = fileName + (extension === 'pdf' ? '.pdf' : '.xlsx');
-            const previewContainer = document.createElement('div');
-            previewContainer.style.width = '100%';
-            previewContainer.style.height = '500px';
-            previewContainer.style.marginTop = '20px';
-            previewContainer.style.border = '1px solid #004080';
-            previewContainer.style.borderRadius = '8px';
-            previewContainer.style.overflow = 'hidden';
-            previewContainer.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-            
-            const iframe = document.createElement('iframe');
-            iframe.src = filePath;
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.style.border = 'none';
-
-            previewContainer.appendChild(iframe);
-            document.body.appendChild(previewContainer);
         }
 
         function searchDocuments() {
