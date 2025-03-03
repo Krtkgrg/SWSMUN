@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SWS MUN Club - Explore Background Guides and other essential documents for your upcoming MUN Conference.">
+    <meta name="description" content="Discover essential documents and background guides for the SWS MUN Club.">
     <title>SWS MUN Club - Documents</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -25,6 +25,12 @@
         .modal-body img {
             width: 100%;
         }
+        .description-tile {
+            background: white;
+            border-left: 5px solid blue;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -42,7 +48,9 @@
         <div class="jumbotron text-center">
             <h1 class="display-4">SWS MUN Club</h1>
             <p class="lead">Where Idea Meets Diplomacy</p>
-            <p>Explore Background Guides and other essential documents for your upcoming MUN Conference.</p>
+            <div class="description-tile">
+                <p>Explore Background Guides and other essential documents for your upcoming MUN Conference. Search for a country below to find the relevant documents.</p>
+            </div>
             <input type="text" id="search" class="form-control" placeholder="Search for a country...">
             <button class="btn btn-primary mt-3" onclick="searchDocuments()">Search</button>
         </div>
@@ -94,6 +102,7 @@
                         <div class="card-body">
                             <h5 class="card-title">${doc.name}</h5>
                             <button class="btn btn-primary" onclick="viewDocument('${doc.img}', '${doc.file}')">View</button>
+                            <a href="${doc.file}" class="btn btn-secondary" download>Download</a>
                         </div>
                     </div>
                 </div>
