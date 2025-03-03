@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SWS MUN Club - Documents</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* General Reset */
-        * {
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
         body {
             margin: 0;
             padding: 0;
@@ -19,177 +15,114 @@
             background-color: rgba(255, 255, 255, 0.9);
         }
         .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
-            border-radius: 15px;
-            overflow: hidden;
-        }
-        .header {
-            text-align: center;
-            padding: 20px;
-            background-color: #004080;
-            color: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        .subtitle {
-            font-size: 1.2em;
-            margin-top: 5px;
-        }
-        .description {
-            text-align: center;
-            font-size: 1.1em;
-            color: #004080;
-            margin: 15px 0;
-        }
-        .search-bar {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .search-bar input {
-            width: 70%;
-            padding: 12px;
-            border: 2px solid #004080;
-            border-radius: 5px;
-            font-size: 1em;
-            outline: none;
-        }
-        .search-bar button {
-            padding: 12px 25px;
-            background-color: #004080;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 1em;
-            border-radius: 5px;
-            margin-left: 5px;
-        }
-        .search-bar button:hover {
-            background-color: #0055aa;
-        }
-        .document-preview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            justify-items: center;
-            padding: 10px;
-        }
-        .document {
-            width: 200px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-        .document:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-top: 30px;
         }
         .document img {
-            width: 100%;
-            height: 120px;
+            height: 200px;
             object-fit: cover;
         }
-        .document-info {
-            padding: 10px;
-            text-align: center;
-        }
-        .document-info h3 {
-            font-size: 1em;
-            color: #004080;
-            margin: 10px 0;
-        }
-        .document-info a {
-            display: block;
-            padding: 8px;
-            margin: 5px 0;
-            background-color: #004080;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.9em;
-        }
-        .document-info a:hover {
-            background-color: #0055aa;
+        .modal-body img {
+            width: 100%;
         }
     </style>
 </head>
 <body>
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">SWS MUN Club</a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <div class="container">
-    <div class="header">
-        <h1>SWS MUN Club</h1>
-        <div class="subtitle">Where Idea Meets Diplomacy</div>
+    <div class="jumbotron text-center">
+        <h1 class="display-4">SWS MUN Club</h1>
+        <p class="lead">Where Idea Meets Diplomacy</p>
+        <p>Explore Background Guides and other essential documents for your upcoming MUN Conference.</p>
+        <input type="text" id="search" class="form-control" placeholder="Search for a country...">
+        <button class="btn btn-primary mt-3" onclick="searchDocuments()">Search</button>
     </div>
-
-    <div class="description">
-        Explore Background Guides and other essential documents for your upcoming MUN Conference.
-    </div>
-
-    <div class="search-bar">
-        <input type="text" id="search" placeholder="Search for a country...">
-        <button onclick="searchDocuments()">Search</button>
-    </div>
-
-    <div class="document-preview" id="documentPreview">
-        <!-- Document Cards - Full List -->
-        <script>
-            const documents = [
-                { name: "BG CHINA", file: "BG CHINA.pdf", img: "china.png" },
-                { name: "BG FRANCE", file: "BG FRANCE.pdf", img: "france.png" },
-                { name: "BG SPAIN", file: "BG SPAIN.pdf", img: "spain.png" },
-                { name: "BG USA", file: "BG USA.pdf", img: "usa.png" },
-                { name: "BG PERU", file: "BG PERU.pdf", img: "peru.png" },
-                { name: "BG GERMANY", file: "BG GERMANY.pdf", img: "germany.png" },
-                { name: "BG RUSSIA", file: "BG RUSSIA.pdf", img: "russia.png" },
-                { name: "BG SOUTH AFRICA", file: "BG SOUTH AFRICA.pdf", img: "south africa.png" },
-                { name: "BG AUSTRALIA", file: "BG AUSTRALIA.pdf", img: "australia.png" },
-                { name: "BG CANADA", file: "BG CANADA.pdf", img: "canada.png" },
-                { name: "BG JAPAN", file: "BG JAPAN.pdf", img: "japan.png" },
-                { name: "MATRIX", file: "MATRIX.xlsx", img: "matrix.png" }
-            ];
-
-            function loadDocuments() {
-                const container = document.getElementById('documentPreview');
-                container.innerHTML = documents.map(doc => `
-                    <div class="document">
-                        <img src="${doc.img}" alt="${doc.name}">
-                        <div class="document-info">
-                            <h3>${doc.name}</h3>
-                            <a href="${doc.file}" download>Download</a>
-                            <a href="${doc.file}" target="_blank">View</a>
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            function searchDocuments() {
-                const query = document.getElementById('search').value.toLowerCase();
-                const documentCards = document.querySelectorAll('.document');
-
-                documentCards.forEach(card => {
-                    const title = card.querySelector('h3').innerText.toLowerCase();
-                    if (title.includes(query)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
-
-            window.onload = loadDocuments;
-        </script>
-    </div>
+    <div class="row" id="documentPreview"></div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="documentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="documentModalLabel">Document</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="" alt="Document" id="documentImage">
+      </div>
+      <div class="modal-footer">
+        <a href="#" id="downloadLink" class="btn btn-primary" download>Download</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    const documents = [
+        { name: "BG CHINA", file: "BG CHINA.pdf", img: "china.png" },
+        { name: "BG FRANCE", file: "BG FRANCE.pdf", img: "france.png" },
+        { name: "BG SPAIN", file: "BG SPAIN.pdf", img: "spain.png" },
+        { name: "BG USA", file: "BG USA.pdf", img: "usa.png" },
+        { name: "BG PERU", file: "BG PERU.pdf", img: "peru.png" },
+        { name: "BG GERMANY", file: "BG GERMANY.pdf", img: "germany.png" },
+        { name: "BG RUSSIA", file: "BG RUSSIA.pdf", img: "russia.png" },
+        { name: "BG SOUTH AFRICA", file: "BG SOUTH AFRICA.pdf", img: "south africa.png" },
+        { name: "BG AUSTRALIA", file: "BG AUSTRALIA.pdf", img: "australia.png" },
+        { name: "BG CANADA", file: "BG CANADA.pdf", img: "canada.png" },
+        { name: "BG JAPAN", file: "BG JAPAN.pdf", img: "japan.png" },
+        { name: "MATRIX", file: "MATRIX.xlsx", img: "matrix.png" }
+    ];
+
+    function loadDocuments() {
+        const container = document.getElementById('documentPreview');
+        container.innerHTML = documents.map(doc => `
+            <div class="col-md-4">
+                <div class="card document">
+                    <img src="${doc.img}" class="card-img-top" alt="${doc.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${doc.name}</h5>
+                        <button class="btn btn-primary" onclick="viewDocument('${doc.img}', '${doc.file}')">View</button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function searchDocuments() {
+        const query = document.getElementById('search').value.toLowerCase();
+        const documentCards = document.querySelectorAll('.document');
+
+        documentCards.forEach(card => {
+            const title = card.querySelector('.card-title').innerText.toLowerCase();
+            if (title.includes(query)) {
+                card.parentElement.style.display = 'block';
+            } else {
+                card.parentElement.style.display = 'none';
+            }
+        });
+    }
+
+    function viewDocument(img, file) {
+        document.getElementById('documentImage').src = img;
+        document.getElementById('downloadLink').href = file;
+        $('#documentModal').modal('show');
+    }
+
+    window.onload = loadDocuments;
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
