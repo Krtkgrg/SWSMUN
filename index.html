@@ -11,7 +11,7 @@
             padding: 0;
             background: url('floral-bg.jpg') no-repeat center center fixed;
             background-size: cover;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.8);
             color: #333;
         }
 
@@ -153,16 +153,6 @@
 
         <div class="document-preview" id="documentPreview">
             <!-- All Documents -->
-            ${['China', 'France', 'Spain', 'USA', 'Peru', 'Germany', 'Russia', 'South Africa', 'Australia', 'Canada', 'Japan', 'Matrix'].map(country => `
-                <div class="document">
-                    <img src="${country.toLowerCase().replace(' ', '-')}.png" alt="${country} Document">
-                    <div class="document-info">
-                        <h3>BG ${country.toUpperCase()}</h3>
-                        <a href="BG ${country.toUpperCase()}.pdf" download>Download</a>
-                        <a href="BG ${country.toUpperCase()}.pdf" target="_blank">View</a>
-                    </div>
-                </div>
-            `).join('')}
         </div>
     </div>
 
@@ -189,6 +179,12 @@
                 `;
                 container.appendChild(div);
             });
+
+            // Fix the image preview for South Africa
+            const southAfricaImg = container.querySelector('img[alt="South Africa Document"]');
+            if (southAfricaImg) {
+                southAfricaImg.src = 'south-africa.png';
+            }
         }
 
         function searchDocuments() {
